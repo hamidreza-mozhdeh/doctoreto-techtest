@@ -92,7 +92,7 @@ class DiscountCodeController extends Controller
      *     )
      * )
      *
-     * @param DiscountCode $discount_code Driver.
+     * @param DiscountCode $discount_code DiscountCode.
      *
      * @return DiscountCodeResource
      */

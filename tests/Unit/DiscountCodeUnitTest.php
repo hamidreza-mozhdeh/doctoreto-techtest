@@ -3,13 +3,10 @@
 namespace Tests\Unit;
 
 use App\Models\DiscountCode;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class DiscountCodeUnitTest extends TestCase
 {
-    use WithFaker;
-
     /**
      * @test
      *
