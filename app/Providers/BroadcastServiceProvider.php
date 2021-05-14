@@ -1,4 +1,5 @@
 <?php
+// phpcs:ignoreFile
 
 namespace App\Providers;
 
@@ -16,6 +17,6 @@ class BroadcastServiceProvider extends ServiceProvider
     {
         Broadcast::routes();
 
-        require base_path('routes/channels.php');
+        include base_path('routes/channels.php');
     }
 }
