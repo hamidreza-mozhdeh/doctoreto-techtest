@@ -18,26 +18,24 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
-        'password',
+        'mobile',
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * @param string   $mobile Mobile.
+     * @param string|null $name Name.
      *
-     * @var array
+     * @return User
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public static function createObject(
+        string $mobile,
+        ?string $name = null
+    ): User {
+        $user = new self();
+        $user->mobile = $mobile;
+        $user->name = $name;
+        $user->save();
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+        return $user;
+    }
 }

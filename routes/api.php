@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DiscountCodeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::apiResource('discount_codes', DiscountCodeController::class)
+    ->only(['show', 'index', 'store']);
+
+Route::apiResource('users', UserController::class)
     ->only(['show', 'index', 'store']);
