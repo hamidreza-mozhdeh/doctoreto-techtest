@@ -13,15 +13,18 @@
 |--|--|--|
 | int| string, nullable | string, unique index |
 
+
 **جدول wallets**
 | id | user_id | deposit | withdraw | balance |
 |--|--|--|--|--|
 | int | int, index | int, default 0 | int, default 0 | int, default 0 |
 
+
 **جدول discount_codes**
 | id | code | number_used |
 |--|--|--|
 | int | string, 10, index | int, default 0 |
+
 
 **جدول discount_histories**
 | id | discount_code_id | user_id |
