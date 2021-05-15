@@ -11,15 +11,14 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @OA\Schema(
  *     schema="User",
  *
- *     @OA\Property(property="id", format="int64", type="integer"),
- *     @OA\Property(property="mobile", type="string"),
- *     @OA\Property(property="name", type="string")
+ * @OA\Property(property="id",     format="int64", type="integer"),
+ * @OA\Property(property="mobile", type="string"),
+ * @OA\Property(property="name",   type="string")
  * )
  *
  * @OA\Schema(schema="Users", type="array", @OA\Items(ref="#/components/schemas/User"))
  *
  * @package App\Http\Resources
- *
  */
 class UserResource extends JsonResource
 {

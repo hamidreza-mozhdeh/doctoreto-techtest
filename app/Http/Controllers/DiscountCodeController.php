@@ -18,10 +18,10 @@ class DiscountCodeController extends Controller
      *     security={{"passport": {}}},
      *     operationId="GetAllDiscountCodes",
      *     description="Get All DiscountCodes.",
-     *     @OA\Response(
+     * @OA\Response(
      *         response=200,
      *         description="All Discount Codes response",
-     *         @OA\JsonContent(ref="#/components/schemas/DiscountCodes")
+     * @OA\JsonContent(ref="#/components/schemas/DiscountCodes")
      *     )
      * )
      *
@@ -78,17 +78,17 @@ class DiscountCodeController extends Controller
      *     security={{"passport": {}}},
      *     operationId="GetDiscountCode",
      *     description="Get DiscountCode.",
-     *     @OA\Parameter(
+     * @OA\Parameter(
      *         description="DiscountCode id which is going to fetch",
      *         in="path",
      *         name="discount_code_id",
      *         required=true,
-     *         @OA\Schema(type="integer", format="int64")
+     * @OA\Schema(type="integer",                                format="int64")
      *     ),
-     *     @OA\Response(
+     * @OA\Response(
      *         response=200,
      *         description="DiscountCodes response",
-     *         @OA\JsonContent(ref="#/components/schemas/DiscountCodes")
+     * @OA\JsonContent(ref="#/components/schemas/DiscountCodes")
      *     )
      * )
      *

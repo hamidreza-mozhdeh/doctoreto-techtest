@@ -7,15 +7,15 @@ class WalletRequest extends BaseRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     *  @OA\Schema(
+     * @OA\Schema(
      *   schema="WalletRequest",
      *   type="object",
      *   required={
      *      "deposit",
      *      "user_id"
      * },
-     *    @OA\Property(property="deposit", type="int"),
-     *    @OA\Property(property="user_id", type="int")
+     * @OA\Property(property="deposit", type="int"),
+     * @OA\Property(property="user_id", type="int")
      * )
      *
      * @return array

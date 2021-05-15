@@ -39,7 +39,7 @@ class DiscountHistory extends Model
 
     /**
      * @param DiscountCode $discountCode Discount Code.
-     * @param User $user User.
+     * @param User         $user         User.
      *
      * @return DiscountHistory
      */
@@ -57,36 +57,37 @@ class DiscountHistory extends Model
 
     /**
      * @param $discountCode DiscountCode.
-     * @param $user User.
+     * @param $user         User.
      *
      * @return mixed
      */
     public static function applyDiscountCode(DiscountCode $discountCode, User $user): DiscountHistory
     {
-        return DB::transaction(function () use ($discountCode, $user) {
-            $discountHistory = DiscountHistory::createObject(
-                $discountCode,
-                $user
-            );
-            $user->discountHistories()->save($discountHistory);
-            $discountCode->increment('number_used');
-            $user->deposit(DiscountHistory::discountDeposit);
+        return DB::transaction(
+            function () use ($discountCode, $user) {
+                $discountHistory = DiscountHistory::createObject(
+                    $discountCode,
+                    $user
+                );
+                $user->discountHistories()->save($discountHistory);
+                $discountCode->increment('number_used');
+                $user->deposit(DiscountHistory::discountDeposit);
 
-            return $discountHistory;
-        });
+                return $discountHistory;
+            }
+        );
     }
 
     /**
      * @param DiscountCode $discountCode Discount Code.
-     * @param User $user User.
+     * @param User         $user         User.
      *
      * @return mixed
      */
     public static function usingCodeFirstTime(
         DiscountCode $discountCode,
         User $user
-    )
-    {
+    ) {
         return DiscountHistory::where('discount_code_id', $discountCode->id)
             ->where('user_id', $user->id)->exists();
     }

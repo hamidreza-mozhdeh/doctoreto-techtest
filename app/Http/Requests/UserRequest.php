@@ -9,13 +9,13 @@ class UserRequest extends BaseRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     *  @OA\Schema(
+     * @OA\Schema(
      *   schema="UserRequest",
      *   type="object",
      *   required={
      *      "mobile"
      * },
-     *    @OA\Property(property="mobile", type="string"),
+     * @OA\Property(property="mobile", type="string"),
      * )
      *
      * @return array

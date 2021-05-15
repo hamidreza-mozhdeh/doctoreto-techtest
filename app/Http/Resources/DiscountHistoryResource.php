@@ -11,17 +11,16 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @OA\Schema(
  *     schema="DiscountHistory",
  *
- *     @OA\Property(property="id", format="int64", type="integer"),
- *     @OA\Property(property="discount_code_id", format="int64", type="integer"),
- *     @OA\Property(property="user_id", format="int64", type="integer"),
- *     @OA\Property(property="discount_code", ref="#/components/schemas/DiscountCode"),
- *     @OA\Property(property="user", ref="#/components/schemas/User"),
+ * @OA\Property(property="id",               format="int64", type="integer"),
+ * @OA\Property(property="discount_code_id", format="int64", type="integer"),
+ * @OA\Property(property="user_id",          format="int64", type="integer"),
+ * @OA\Property(property="discount_code",    ref="#/components/schemas/DiscountCode"),
+ * @OA\Property(property="user",             ref="#/components/schemas/User"),
  * )
  *
  * @OA\Schema(schema="DiscountHistories", type="array", @OA\Items(ref="#/components/schemas/DiscountHistory"))
  *
  * @package App\Http\Resources
- *
  */
 class DiscountHistoryResource extends JsonResource
 {

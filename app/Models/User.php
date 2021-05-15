@@ -41,8 +41,8 @@ class User extends Authenticatable
     }
 
     /**
-     * @param string   $mobile Mobile.
-     * @param string|null $name Name.
+     * @param string      $mobile Mobile.
+     * @param string|null $name   Name.
      *
      * @return User
      */
@@ -69,7 +69,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @param int $value Value of deposit.
+     * @param  int $value Value of deposit.
      * @return Wallet Wallet.
      */
     public function deposit(int $value): Wallet

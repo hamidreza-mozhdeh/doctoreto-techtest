@@ -13,15 +13,15 @@ class UserController extends Controller
      * Display a listing of the resource.
      *
      * @OA\Get(
-     *     path="/api/users",
-     *     tags={"Users"},
+     *     path="/api/wallets",
+     *     tags={"Wallets"},
      *     security={{"passport": {}}},
-     *     operationId="GetAllUsers",
-     *     description="Get All Users.",
+     *     operationId="GetAllWallets",
+     *     description="Get All Wallets.",
      *     @OA\Response(
      *         response=200,
-     *         description="All Users response",
-     *         @OA\JsonContent(ref="#/components/schemas/Users")
+     *         description="All wallets response",
+     *         @OA\JsonContent(ref="#/components/schemas/Wallets")
      *     )
      * )
      *
@@ -78,17 +78,17 @@ class UserController extends Controller
      *     security={{"passport": {}}},
      *     operationId="GetUser",
      *     description="Get User.",
-     *     @OA\Parameter(
+     * @OA\Parameter(
      *         description="User id which is going to fetch",
      *         in="path",
      *         name="id",
      *         required=true,
-     *         @OA\Schema(type="integer", format="int64")
+     * @OA\Schema(type="integer",                        format="int64")
      *     ),
-     *     @OA\Response(
+     * @OA\Response(
      *         response=200,
      *         description="Users response",
-     *         @OA\JsonContent(ref="#/components/schemas/Users")
+     * @OA\JsonContent(ref="#/components/schemas/Users")
      *     )
      * )
      *

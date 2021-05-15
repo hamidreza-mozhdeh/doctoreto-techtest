@@ -9,22 +9,7 @@ use Tests\TestCase;
 
 class UserTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
-
-    /**
-     * @test
-     *
-     * Get All Users test.
-     *
-     * @return void
-     */
-    public function getAllUsers()
-    {
-        $rand = rand(3, 9);
-        User::factory()->count($rand)->create();
-        $response = $this->getJson(route('users.index'))->assertOk();
-        $this->assertEquals($rand, count($response->getOriginalContent()));
-    }
+    use RefreshDatabase;
 
     /**
      * @test
@@ -44,6 +29,22 @@ class UserTest extends TestCase
         )->assertCreated();
 
         $this->assertEquals($response->getOriginalContent()->mobile, $user->mobile);
+    }
+
+    /**
+     * @test
+     *
+     * Get All Users test.
+     *
+     * @return void
+     */
+    public function getAllUsers()
+    {
+        User::truncate();
+        $rand = rand(3, 9);
+        User::factory()->count($rand)->create();
+        $response = $this->getJson(route('users.index'))->assertOk();
+        $this->assertEquals($rand, $response->getOriginalContent()->count());
     }
 
     /**

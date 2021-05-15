@@ -11,15 +11,14 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @OA\Schema(
  *     schema="DiscountCode",
  *
- *     @OA\Property(property="id", format="int64", type="integer"),
- *     @OA\Property(property="code", type="string"),
- *     @OA\Property(property="number_used", format="int64", type="integer")
+ * @OA\Property(property="id",          format="int64", type="integer"),
+ * @OA\Property(property="code",        type="string"),
+ * @OA\Property(property="number_used", format="int64", type="integer")
  * )
  *
  * @OA\Schema(schema="DiscountCodes", type="array", @OA\Items(ref="#/components/schemas/DiscountCode"))
  *
  * @package App\Http\Resources
- *
  */
 class DiscountCodeResource extends JsonResource
 {

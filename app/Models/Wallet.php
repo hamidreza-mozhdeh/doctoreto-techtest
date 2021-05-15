@@ -19,10 +19,10 @@ class Wallet extends Model
     }
 
     /**
-     * @param int $user_id User Id.
-     * @param int|null $deposit Deposit.
-     * @param int|null $withdraw Withdraw.
-     * @param int|null $balance Balance.
+     * @param  int      $user_id  User Id.
+     * @param  int|null $deposit  Deposit.
+     * @param  int|null $withdraw Withdraw.
+     * @param  int|null $balance  Balance.
      * @return Wallet
      */
     public static function createObject(
