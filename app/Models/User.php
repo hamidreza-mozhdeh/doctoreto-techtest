@@ -33,6 +33,14 @@ class User extends Authenticatable
     }
 
     /**
+     * @return HasMany
+     */
+    public function discountHistories(): HasMany
+    {
+        return $this->hasMany(DiscountHistory::class);
+    }
+
+    /**
      * @param string   $mobile Mobile.
      * @param string|null $name Name.
      *

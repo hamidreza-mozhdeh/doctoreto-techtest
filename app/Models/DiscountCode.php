@@ -4,10 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class DiscountCode extends Model
 {
     use HasFactory;
+
+    /**
+     * @return HasMany
+     */
+    public function discountHistories(): HasMany
+    {
+        return $this->hasMany(DiscountHistory::class);
+    }
 
     /**
      * @param string   $code       Discount Code.

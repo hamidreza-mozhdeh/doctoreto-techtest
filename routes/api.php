@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DiscountCodeController;
+use App\Http\Controllers\DiscountHistoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
@@ -23,5 +24,8 @@ Route::apiResource('users', UserController::class)
 
 Route::post('wallets', [WalletController::class, 'deposit'])
     ->name('wallets.deposit');
+
+Route::post('discount_histories', [DiscountHistoryController::class, 'useDiscount'])
+    ->name('discount_histories.use_discount');
 
 
