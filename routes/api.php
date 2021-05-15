@@ -22,10 +22,10 @@ Route::apiResource('discount_codes', DiscountCodeController::class)
 Route::apiResource('users', UserController::class)
     ->only(['show', 'index', 'store']);
 
-Route::post('wallets', [WalletController::class, 'deposit'])
+Route::post('wallets/deposit', [WalletController::class, 'deposit'])
     ->name('wallets.deposit');
 
-Route::post('discount_histories', [DiscountHistoryController::class, 'useDiscount'])
+Route::post('discount_histories/use_discount', [DiscountHistoryController::class, 'useDiscount'])
     ->name('discount_histories.use_discount');
 
 

@@ -9,7 +9,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * Class DiscountCodeResource
  *
  * @OA\Schema(
- *     schema="DiscountCode",
+ *      schema="DiscountCode",
  *
  * @OA\Property(property="id",          format="int64", type="integer"),
  * @OA\Property(property="code",        type="string"),
@@ -32,6 +32,7 @@ class DiscountCodeResource extends JsonResource
     public function toArray($request): array
     {
         return [
+            'id' => $this->id,
             'code' => $this->code,
             'number_used' => (string)$this->number_used,
         ];

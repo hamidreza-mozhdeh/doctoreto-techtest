@@ -10,7 +10,7 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 class DiscountCodeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of discount code.
      *
      * @OA\Get(
      *     path="/api/discount_codes",

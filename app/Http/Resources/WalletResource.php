@@ -9,14 +9,14 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * Class WalletResource
  *
  * @OA\Schema(
- *     schema="Wallet",
+ *      schema="Wallet",
  *
  * @OA\Property(property="id",       format="int64", type="integer"),
  * @OA\Property(property="user_id",  format="int64", type="integer"),
  * @OA\Property(property="deposit",  format="int64", type="integer"),
  * @OA\Property(property="withdraw", format="int64", type="integer"),
  * @OA\Property(property="balance",  format="int64", type="integer"),
- * @OA\Property(property="user",     ref="#/components/schemas/User"),
+ * @OA\Property(property="user",     ref="#/components/schemas/User")
  * )
  *
  * @OA\Schema(schema="Wallets", type="array", @OA\Items(ref="#/components/schemas/Wallet"))

@@ -14,7 +14,7 @@
                 "tags": [
                     "DiscountCodes"
                 ],
-                "summary": "Display a listing of the resource.",
+                "summary": "Display a listing of discount code.",
                 "description": "Get All DiscountCodes.",
                 "operationId": "GetAllDiscountCodes",
                 "responses": {
@@ -111,17 +111,55 @@
                 ]
             }
         },
+        "/api/discount_histories/use_discount": {
+            "post": {
+                "tags": [
+                    "DiscountHistories"
+                ],
+                "summary": "Use discount code.",
+                "description": "Deposit DiscountHistory.",
+                "operationId": "DepositDiscountHistory",
+                "requestBody": {
+                    "description": "Its needed to create user and DiscountCode at first.",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DiscountHistoryRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "DiscountHistory response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DiscountHistory"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
         "/api/users": {
             "get": {
                 "tags": [
                     "Users"
                 ],
-                "summary": "Display a listing of the resource.",
+                "summary": "Display a listing of users resource.",
                 "description": "Get All Users.",
                 "operationId": "GetAllUsers",
                 "responses": {
                     "200": {
-                        "description": "All Users response",
+                        "description": "All users response",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -145,7 +183,7 @@
                 "description": "Create a new User.",
                 "operationId": "CreateUser",
                 "requestBody": {
-                    "description": "Code to add",
+                    "description": "Just enter the mobile below",
                     "required": true,
                     "content": {
                         "application/x-www-form-urlencoded": {
@@ -179,12 +217,12 @@
                 "tags": [
                     "Users"
                 ],
-                "summary": "Display the specified resource.",
+                "summary": "Display the user resource.",
                 "description": "Get User.",
                 "operationId": "GetUser",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "user_id",
                         "in": "path",
                         "description": "User id which is going to fetch",
                         "required": true,
@@ -212,6 +250,44 @@
                     }
                 ]
             }
+        },
+        "/api/wallets/deposit": {
+            "post": {
+                "tags": [
+                    "Wallets"
+                ],
+                "summary": "Deposit amount to a wallet.",
+                "description": "Deposit a users wallet.",
+                "operationId": "DepositWallet",
+                "requestBody": {
+                    "description": "Deposit a users wallet",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WalletRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Wallet response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wallet"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
         }
     },
     "components": {
@@ -222,8 +298,25 @@
                 ],
                 "properties": {
                     "code": {
-                        "description": "Get the validation rules that apply to the request.",
+                        "description": "New disctount code",
                         "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "DiscountHistoryRequest": {
+                "required": [
+                    "discount_code_id",
+                    "user_id"
+                ],
+                "properties": {
+                    "discount_code_id": {
+                        "description": "DiscountCode id",
+                        "type": "int"
+                    },
+                    "user_id": {
+                        "description": "User id",
+                        "type": "int"
                     }
                 },
                 "type": "object"
@@ -234,8 +327,25 @@
                 ],
                 "properties": {
                     "mobile": {
-                        "description": "Get the validation rules that apply to the request.",
+                        "description": "Enter a number at least 10 min length",
                         "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "WalletRequest": {
+                "required": [
+                    "deposit",
+                    "user_id"
+                ],
+                "properties": {
+                    "deposit": {
+                        "description": "How many you whant to apply",
+                        "type": "int"
+                    },
+                    "user_id": {
+                        "description": "Enter the selected user id",
+                        "type": "int"
                     }
                 },
                 "type": "object"
@@ -265,6 +375,38 @@
                     "$ref": "#/components/schemas/DiscountCode"
                 }
             },
+            "DiscountHistory": {
+                "properties": {
+                    "id": {
+                        "description": "Class DiscountHistoryResource",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "discount_code_id": {
+                        "description": "Class DiscountHistoryResource",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "user_id": {
+                        "description": "Class DiscountHistoryResource",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "discount_code": {
+                        "$ref": "#/components/schemas/DiscountCode"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                },
+                "type": "object"
+            },
+            "DiscountHistories": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/DiscountHistory"
+                }
+            },
             "User": {
                 "properties": {
                     "id": {
@@ -287,6 +429,45 @@
                 "type": "array",
                 "items": {
                     "$ref": "#/components/schemas/User"
+                }
+            },
+            "Wallet": {
+                "properties": {
+                    "id": {
+                        "description": "Class WalletResource",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "user_id": {
+                        "description": "Class WalletResource",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "deposit": {
+                        "description": "Class WalletResource",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "withdraw": {
+                        "description": "Class WalletResource",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "balance": {
+                        "description": "Class WalletResource",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                },
+                "type": "object"
+            },
+            "Wallets": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Wallet"
                 }
             }
         }

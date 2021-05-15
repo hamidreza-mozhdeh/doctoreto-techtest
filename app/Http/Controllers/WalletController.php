@@ -5,23 +5,20 @@ namespace App\Http\Controllers;
 use App\Http\Requests\WalletRequest;
 use App\Http\Resources\WalletResource;
 use App\Models\User;
-use App\Models\Wallet;
-use Illuminate\Http\Request;
 
 class WalletController extends Controller
 {
-
     /**
-     * Deposit Wallet.
+     * Deposit amount to a wallet.
      *
      * @OA\Post(
-     *     path="/api/wallets",
+     *     path="/api/wallets/deposit",
      *     tags={"Wallets"},
      *     security={{"passport": {}}},
      *     operationId="DepositWallet",
-     *     description="Deposit Wallet.",
+     *     description="Deposit a users wallet.",
      * @OA\RequestBody(
-     *         description="Code to add",
+     *         description="Deposit a users wallet",
      *         required=true,
      * @OA\MediaType(
      *             mediaType="application/x-www-form-urlencoded",

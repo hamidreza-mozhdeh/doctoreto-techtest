@@ -13,7 +13,7 @@ class DiscountCodeRequest extends BaseRequest
      *   required={
      *      "code"
      * },
-     * @OA\Property(property="code", type="string"),
+     * @OA\Property(property="code", type="string", description="New disctount code"),
      * )
      *
      * @return array

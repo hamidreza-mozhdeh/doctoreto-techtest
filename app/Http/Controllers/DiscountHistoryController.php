@@ -13,16 +13,16 @@ use Illuminate\Http\Response;
 class DiscountHistoryController extends Controller
 {
     /**
-     * Deposit DiscountHistory.
+     * Use discount code.
      *
      * @OA\Post(
-     *     path="/api/wallets",
+     *     path="/api/discount_histories/use_discount",
      *     tags={"DiscountHistories"},
      *     security={{"passport": {}}},
      *     operationId="DepositDiscountHistory",
      *     description="Deposit DiscountHistory.",
      * @OA\RequestBody(
-     *         description="Code to add",
+     *         description="Its needed to create user and DiscountCode at first.",
      *         required=true,
      * @OA\MediaType(
      *         mediaType="application/x-www-form-urlencoded",
@@ -46,10 +46,10 @@ class DiscountHistoryController extends Controller
         $discountCode = DiscountCode::find($request->get('discount_code_id'));
 
         if ($discountCode->number_used >= DiscountHistory::usageLimit) {
-            return $this->responseCodeNotValid();
+            return $this->responseCodeIsNotValid();
         }
 
-        if (DiscountHistory::usingCodeFirstTime($discountCode, $user)) {
+        if (DiscountHistory::usedDiscountCodeBefore($discountCode, $user)) {
             return $this->responseCodeUsedBefore();
         }
 
@@ -61,7 +61,7 @@ class DiscountHistoryController extends Controller
     /**
      * @return JsonResponse
      */
-    public function responseCodeNotValid(): JsonResponse
+    public function responseCodeIsNotValid(): JsonResponse
     {
         return response()->json(
             [

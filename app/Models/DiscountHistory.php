@@ -24,7 +24,7 @@ class DiscountHistory extends Model
     /**
      * @return BelongsTo
      */
-    public function users(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -32,7 +32,7 @@ class DiscountHistory extends Model
     /**
      * @return BelongsTo
      */
-    public function discountCodes(): BelongsTo
+    public function discountCode(): BelongsTo
     {
         return $this->belongsTo(DiscountCode::class);
     }
@@ -84,7 +84,7 @@ class DiscountHistory extends Model
      *
      * @return mixed
      */
-    public static function usingCodeFirstTime(
+    public static function usedDiscountCodeBefore(
         DiscountCode $discountCode,
         User $user
     ) {

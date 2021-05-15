@@ -14,8 +14,8 @@ class DiscountHistoryRequest extends BaseRequest
      *      "discount_code_id",
      *      "user_id"
      * },
-     * @OA\Property(property="discount_code_id", type="int"),
-     * @OA\Property(property="user_id",          type="int")
+     * @OA\Property(property="discount_code_id", type="int", description="DiscountCode id"),
+     * @OA\Property(property="user_id",          type="int", description="User id")
      * )
      *
      * @return array

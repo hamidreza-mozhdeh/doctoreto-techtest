@@ -10,18 +10,18 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of users resource.
      *
      * @OA\Get(
-     *     path="/api/wallets",
-     *     tags={"Wallets"},
+     *     path="/api/users",
+     *     tags={"Users"},
      *     security={{"passport": {}}},
-     *     operationId="GetAllWallets",
-     *     description="Get All Wallets.",
-     *     @OA\Response(
+     *     operationId="GetAllUsers",
+     *     description="Get All Users.",
+     * @OA\Response(
      *         response=200,
-     *         description="All wallets response",
-     *         @OA\JsonContent(ref="#/components/schemas/Wallets")
+     *         description="All users response",
+     * @OA\JsonContent(ref="#/components/schemas/Users")
      *     )
      * )
      *
@@ -42,7 +42,7 @@ class UserController extends Controller
      *     operationId="CreateUser",
      *     description="Create a new User.",
      * @OA\RequestBody(
-     *         description="Code to add",
+     *         description="Just enter the mobile below",
      *         required=true,
      * @OA\MediaType(
      *             mediaType="application/x-www-form-urlencoded",
@@ -70,7 +70,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the user resource.
      *
      * @OA\Get(
      *     path="/api/users/{user_id}",
@@ -81,7 +81,7 @@ class UserController extends Controller
      * @OA\Parameter(
      *         description="User id which is going to fetch",
      *         in="path",
-     *         name="id",
+     *         name="user_id",
      *         required=true,
      * @OA\Schema(type="integer",                        format="int64")
      *     ),

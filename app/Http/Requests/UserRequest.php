@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
 class UserRequest extends BaseRequest
 {
     /**
@@ -15,7 +13,11 @@ class UserRequest extends BaseRequest
      *   required={
      *      "mobile"
      * },
-     * @OA\Property(property="mobile", type="string"),
+     * @OA\Property(
+     *     property="mobile",
+     *     type="string",
+     *     description="Enter a number at least 10 min length"
+     * ),
      * )
      *
      * @return array
