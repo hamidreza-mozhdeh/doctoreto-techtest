@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DiscountCodeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,8 @@ Route::apiResource('discount_codes', DiscountCodeController::class)
 
 Route::apiResource('users', UserController::class)
     ->only(['show', 'index', 'store']);
+
+Route::post('wallets', [WalletController::class, 'deposit'])
+    ->name('wallets.deposit');
+
+
