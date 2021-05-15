@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+
 
 class UserFactory extends Factory
 {
@@ -23,8 +23,8 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
             'mobile' => $this->faker->unique()->regexify('9[0-9]{9}'),
+            'name' => $this->faker->name,
         ];
     }
 }

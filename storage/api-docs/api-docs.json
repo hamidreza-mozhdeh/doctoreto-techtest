@@ -1,0 +1,297 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "L5 OpenApi",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "hamidreza87m@gmail.com"
+        },
+        "version": "8.0.0"
+    },
+    "paths": {
+        "/api/discount_codes": {
+            "get": {
+                "tags": [
+                    "DiscountCodes"
+                ],
+                "summary": "Display a listing of the resource.",
+                "description": "Get All DiscountCodes.",
+                "operationId": "GetAllDiscountCodes",
+                "responses": {
+                    "200": {
+                        "description": "All Discount Codes response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DiscountCodes"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "DiscountCodes"
+                ],
+                "summary": "Store a new Discount Code.",
+                "description": "Create a new DiscountCode.",
+                "operationId": "CreateDiscountCode",
+                "requestBody": {
+                    "description": "Code to add",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DiscountCodeRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Discount response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DiscountCode"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/discount_codes/{discount_code_id}": {
+            "get": {
+                "tags": [
+                    "DiscountCodes"
+                ],
+                "summary": "Display the specified resource.",
+                "description": "Get DiscountCode.",
+                "operationId": "GetDiscountCode",
+                "parameters": [
+                    {
+                        "name": "discount_code_id",
+                        "in": "path",
+                        "description": "DiscountCode id which is going to fetch",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "DiscountCodes response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DiscountCodes"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Display a listing of the resource.",
+                "description": "Get All Users.",
+                "operationId": "GetAllUsers",
+                "responses": {
+                    "200": {
+                        "description": "All Users response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Users"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Store a new User.",
+                "description": "Create a new User.",
+                "operationId": "CreateUser",
+                "requestBody": {
+                    "description": "Code to add",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/users/{user_id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Display the specified resource.",
+                "description": "Get User.",
+                "operationId": "GetUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id which is going to fetch",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Users response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Users"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "DiscountCodeRequest": {
+                "required": [
+                    "code"
+                ],
+                "properties": {
+                    "code": {
+                        "description": "Get the validation rules that apply to the request.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "UserRequest": {
+                "required": [
+                    "mobile"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "Get the validation rules that apply to the request.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "DiscountCode": {
+                "properties": {
+                    "id": {
+                        "description": "Class DiscountCodeResource",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "code": {
+                        "description": "Class DiscountCodeResource",
+                        "type": "string"
+                    },
+                    "number_used": {
+                        "description": "Class DiscountCodeResource",
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "type": "object"
+            },
+            "DiscountCodes": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/DiscountCode"
+                }
+            },
+            "User": {
+                "properties": {
+                    "id": {
+                        "description": "Class UserResource",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "mobile": {
+                        "description": "Class UserResource",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Class UserResource",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Users": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/User"
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

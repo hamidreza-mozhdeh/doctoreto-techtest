@@ -52,7 +52,7 @@ class DiscountCodeController extends Controller
      * @OA\Response(
      *         response=201,
      *         description="Discount response",
-     * @OA\JsonContent(ref="#/components/schemas/Discount")
+     * @OA\JsonContent(ref="#/components/schemas/DiscountCode")
      *     )
      * )
      *
